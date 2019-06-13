@@ -1,17 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <title>study Django</title>
 </head>
 <body>
 <h1>Hello Django</h1>
-<from method="post" action="/login_action/">
+<form method="post" action="/login_action/">
+    {% csrf_token %}
     <input name="username" type="text" placeholder="username"><br>
     <input name="password" type="password" placeholder="password"><br>
-    {{ error }}<br>
     <button id="btn" type="submit">登陆</button>
-    {% csrf_token %}
-</from>
+    {{ error }}
+</form>
 </body>
 </html>
