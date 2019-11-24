@@ -17,15 +17,19 @@ def login_action(request):
         if user is not None:
             auth.login(request, user)
             response = HttpResponseRedirect('/event_manage/')
-            # response.set_cookie('user', username, 3600)
-            request.session['user'] = username
+            request.session['user'] = username     # 将username写到浏览器session里
             return response
+        elif username is '':
+            return render(request, 'index.html', {'error': 'username is not None!'})
+        elif password is '':
+            return render(request, 'index.html', {'error': 'password is not None!'})
         else:
             return render(request, 'index.html', {'error': 'username or password error!'})
 
 
+# 发布会管理管理
 @login_required
 def event_manage(request):
-    # username = request.COOKIES.get('user', '')
-    username = request.session.get('user', '')
+    # username = request.COOKIES.get('user', '')    #浏览器获取cookie
+    username = request.session.get('user', '')      # 浏览器获取session
     return render(request, "event_manage.html", {"user": username})
