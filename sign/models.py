@@ -8,8 +8,8 @@ class Event(models.Model):
     limit = models.IntegerField()                       # 参加人数
     status = models.BooleanField()                      # 状态
     address = models.CharField(max_length=200)          # 地址
-    start_time = models.DateField('evens time')         # 开始时间
-    create_time = models.DateField(auto_now=True)       # 创建时间(自动获取当前时间)
+    start_time = models.DateTimeField('evens time')         # 开始时间
+    create_time = models.DateTimeField(auto_now=True)       # 创建时间(自动获取当前时间)
 
     def __str__(self):
         return self.name
@@ -22,7 +22,7 @@ class Guest(models.Model):
     phone = models.CharField(max_length=16)             # 电话
     email = models.EmailField()                         # 邮箱
     sign = models.BooleanField()                        # 签到状态
-    create_time = models.DateField(auto_now=True)       # 创建时间(自动获取当前时间)
+    create_time = models.DateTimeField(auto_now=True)   # 创建时间(自动获取当前时间)
 
     class Meta:
         unique_together = ("event", "phone")
