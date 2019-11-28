@@ -23,5 +23,6 @@ urlpatterns = [
     path('login_action/', views.login_action),
     path('event_manage/', views.event_manage),
     path('', views.index),
-    path('accounts/login/', views.index)
+    path('accounts/login/', views.index),
+    path('search_name/', views.search_name)
     ]
